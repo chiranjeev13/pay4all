@@ -48,6 +48,7 @@ contract dClap {
     mapping(uint256 => mapping(address => Society_members)) SocietyMapper;
     mapping(address => Workers) worker;
     mapping(address => Residents) resident;
+    mapping(address => uint256) public workerBalances;
 
     Workers[] public workersArray;
     Residents[] public residentsArray;
@@ -166,20 +167,23 @@ contract dClap {
         residentCount++;
     }
 
-    // function pay_to_worker(
-    //     uint256 society_id,
-    //     uint256 val,
-    //     address workerAddress
-    // ) public {
-    //     require(
-    //         Society[society_id][msg.sender].active == true,
-    //         "Not a valid resident"
-    //     );
-    //     require(worker[workerAddress].active == true, "Not a valid worker");
-    //     require(
-    //         IERC20(tokenAddress).balanceOf(msg.sender) > msg.value,
-    //         "Not enough to balance to make this transaction"
-    //     );
-    //     // IERC20(0x0000000000000000000000000000000000001010)
-    // }
+    function pay_to_worker(
+        uint256 society_id,
+        uint256 val,
+        address workerAddress
+    ) public payable {
+        require(
+            SocietyMapper[society_id][msg.sender].active == true,
+            "Not a valid resident"
+        );
+        require(worker[workerAddress].active == true, "Not a valid worker");
+        require(
+            IERC20(tokenAddress).balanceOf(msg.sender) > msg.value,
+            "Not enough to balance to make this transaction"
+        );
+        IERC20(tokenAddress).transferFrom(msg.sender, address(this), val);
+        workerBalances[workerAddress] += val;
+
+        // IERC20(0x0000000000000000000000000000000000001010)
+    }
 }
