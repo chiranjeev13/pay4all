@@ -20,10 +20,9 @@ module.exports = {
       accounts: [""],
       blockConfirmations: 6,
     },
+
   },
-  etherscan: {
-    apiKey: "",
-  },
+  
   namedAccounts: {
     deployer: {
       default: 0,
