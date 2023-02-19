@@ -10,7 +10,6 @@ contract HoldersPool {
         uint256 flag
     ) public payable returns (bool) {
         require(flag == 1, "Already registered");
-        workerBalances[worker] += amount;
         return true;
     }
 }
