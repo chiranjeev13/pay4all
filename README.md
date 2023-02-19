@@ -16,4 +16,4 @@ The moral goal is to prevent small amounts of money being spent on harmful and l
 The technical goal is create a seamless platform that is transparent in displaying where the money flows by keeping a central aggregator and the user need only pay the unique wallet address corresponding to the worker.
 
 
-Contract deployed on Mumbai at 0xB111DF95Df1ed177917d09265688adFd4FDc364E
+**Contract deployed on Mumbai at 0xB111DF95Df1ed177917d09265688adFd4FDc364E**
